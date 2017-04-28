@@ -9,32 +9,41 @@
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
-# It's strongly recommended to check this file into your version control system.
+# It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120412125204) do
+ActiveRecord::Schema.define(version: 20170428004104) do
 
-  create_table "categories", :force => true do |t|
-    t.string   "name"
-    t.boolean  "active",     :default => true
-    t.datetime "created_at",                   :null => false
-    t.datetime "updated_at",                   :null => false
+  create_table "articles", force: true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.integer  "categor_id"
+    t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "photos", :force => true do |t|
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.boolean  "active",     default: true
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  create_table "photos", force: true do |t|
     t.string   "caption"
     t.integer  "category_id"
-    t.boolean  "active",      :default => true
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.boolean  "active",      default: true
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.string   "image"
   end
 
-  create_table "proverbs", :force => true do |t|
+  create_table "proverbs", force: true do |t|
     t.string   "klingon"
     t.string   "translation"
-    t.boolean  "active",      :default => true
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.boolean  "active",      default: true
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
 end
